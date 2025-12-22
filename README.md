@@ -1,11 +1,19 @@
-# Turbopuffer GUI
+<p align="center">
+  <img src="assets/icon.png" alt="Turbopuffer GUI" width="128" height="128">
+</p>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Electron](https://img.shields.io/badge/Electron-36.5.0-47848F?logo=electron&logoColor=white)](https://www.electronjs.org/)
-[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-4.5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+<h1 align="center">Turbopuffer GUI</h1>
 
-A third-party, open-source desktop GUI client for [Turbopuffer](https://turbopuffer.com) - the blazing-fast vector and full-text search engine.
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="https://www.electronjs.org/"><img src="https://img.shields.io/badge/Electron-36.5.0-47848F?logo=electron&logoColor=white" alt="Electron"></a>
+  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white" alt="React"></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-4.5-3178C6?logo=typescript&logoColor=white" alt="TypeScript"></a>
+</p>
+
+<p align="center">
+  A third-party, open-source desktop GUI client for <a href="https://turbopuffer.com">Turbopuffer</a> - the blazing-fast vector and full-text search engine.
+</p>
 
 > **Note**: This is an unofficial community project and is not affiliated with Turbopuffer.
 
