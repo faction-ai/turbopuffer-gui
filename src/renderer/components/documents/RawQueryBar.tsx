@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Editor from '@monaco-editor/react';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -19,7 +19,6 @@ import { useToast } from '@/hooks/use-toast';
 import { useConnection } from '@/renderer/contexts/ConnectionContext';
 import { turbopufferService } from '@/renderer/services/turbopufferService';
 import { useDocumentsStore } from '@/renderer/stores/documentsStore';
-import { useSettings } from '@/renderer/contexts/SettingsContext';
 
 interface RawQueryBarProps {
   namespaceId: string;
@@ -30,49 +29,15 @@ export const RawQueryBar: React.FC<RawQueryBarProps> = ({ namespaceId, initialQu
   const { activeConnection } = useConnection();
   const { toast } = useToast();
   const { setRawQueryResults, clearDocuments, attributes } = useDocumentsStore();
-  const { settings } = useSettings();
   const [query, setQuery] = useState(initialQuery || '{\n  "rank_by": ["id", "asc"],\n  "top_k": 1000,\n  "include_attributes": true\n}');
   const [isExecuting, setIsExecuting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
-  const [systemPrefersDark, setSystemPrefersDark] = useState(
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-  );
   const editorRef = useRef<any>(null);
 
-  // Track system theme preference
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handler = (e: MediaQueryListEvent) => setSystemPrefersDark(e.matches);
-    
-    mediaQuery.addEventListener('change', handler);
-    return () => mediaQuery.removeEventListener('change', handler);
-  }, []);
-
-  // Resolve the current theme
-  const getResolvedTheme = (): 'light' | 'dark' => {
-    if (!settings) return 'light';
-    
-    switch (settings.appearance.theme) {
-      case 'dark': return 'dark';
-      case 'light': return 'light';
-      case 'system': return systemPrefersDark ? 'dark' : 'light';
-      default: return 'light';
-    }
-  };
-
-  const resolvedTheme = getResolvedTheme();
-  const monacoTheme = resolvedTheme === 'dark' ? 'vs-dark' : 'vs';
-
-  // Update Monaco Editor theme when app theme changes
-  useEffect(() => {
-    if (editorRef.current) {
-      const monaco = editorRef.current.getModel()?.languages?.monaco || window.monaco;
-      if (monaco) {
-        monaco.editor.setTheme(monacoTheme);
-      }
-    }
-  }, [monacoTheme]);
+  // Force dark theme for Monaco (light theme not yet tested)
+  // TODO: Re-enable theme switching once light theme is validated
+  const monacoTheme = 'vs-dark';
 
   const executeQuery = async () => {
     if (!activeConnection) {

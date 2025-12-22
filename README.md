@@ -26,7 +26,7 @@ TODO: Add screenshots of the application
 - **Schema Designer**: Visual schema design tool for configuring vector dimensions, full-text search, and attribute indexes
 - **Advanced Filtering**: Build complex filters using a visual filter builder or raw query mode
 - **Aggregations**: Run aggregation queries with group-by support
-- **Dark Mode**: Full dark/light theme support
+- **Dark Mode**: Terminal-inspired dark theme
 
 ## Installation
 
@@ -118,6 +118,8 @@ This application disables Chromium's web security (CORS) to allow the Turbopuffe
 - Local files (`file://`)
 
 Any request to other domains is blocked. This prevents potential data exfiltration even if a malicious script were to run in the renderer.
+
+**Future Improvement**: API requests should be migrated from the renderer process to the main process via IPC. This would eliminate the need to disable web security and provide better isolation between the UI and network layer.
 
 For security vulnerabilities, please see [SECURITY.md](SECURITY.md).
 

@@ -113,20 +113,9 @@ class SettingsService {
 
   // Apply settings immediately
   async applySettings(settings: Settings): Promise<void> {
-    // Apply theme
-    if (settings.appearance.theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else if (settings.appearance.theme === 'light') {
-      document.documentElement.classList.remove('dark');
-    } else {
-      // System preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (prefersDark) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    }
+    // Force dark theme for now (light theme not yet tested)
+    // TODO: Re-enable theme switching once light theme is validated
+    document.documentElement.classList.add('dark');
 
     // Apply font size
     const fontSizePercent = settings.appearance.fontSize ?? 100;

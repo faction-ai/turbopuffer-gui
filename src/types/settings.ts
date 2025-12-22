@@ -9,7 +9,7 @@ export interface ApiSettings {
 }
 
 export interface AppearanceSettings {
-  theme: 'light' | 'dark' | 'system';
+  theme: 'light' | 'dark' | 'system'; // Light theme not yet tested, dark mode forced for now
   sidebarCollapsed: boolean;
   fontSize: number; // percentage: 80, 90, 100, 110, 125, etc.
 }
@@ -31,7 +31,7 @@ export const DEFAULT_SETTINGS: Settings = {
     requestLoggingLevel: 'none',
   },
   appearance: {
-    theme: 'system',
+    theme: 'dark',
     sidebarCollapsed: false,
     fontSize: 100,
   },
